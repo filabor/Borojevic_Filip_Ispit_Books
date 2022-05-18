@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Book>
+
+
+
+<h1>Administration page</h1>
+<hr />
+
+<div class="text-center">
+    <h1 class="display-4">Book Collection</h1>
+</div>
+
+
+<a asp-action="Create">Add new book</a>
+
+<hr />
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4">
+            <div class="card text-dark bg-light mb-3">
+                <div class="card-header">Author: @item.Author.Name </div>
+                <div class="card-body">
+                    <h5 class="card-title">Title: @item.Title</h5>
+                    <hr \>
+                    <p class="card-text">Publisher: @item.Publisher.Name</p>
+                    <p class="card-text">Genre: @item.Genre</p>
+                    <p class="card-text">Description: @item.Description</p>
+                    <hr \>
+                    <p>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    }
+</div>
